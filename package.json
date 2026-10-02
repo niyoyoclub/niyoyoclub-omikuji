@@ -1,7 +1,7 @@
 {
-  "name": "bnk48-omikuji",
+  "name": "niyoyoclub-omikuji",
   "version": "1.0.0",
-  "description": "BNK48 Omikuji - 28 Cards of Encouragement",
+  "description": "Niyoyo Club Omikuji - 28 Cards of Encouragement",
   "scripts": {
     "deploy": "vercel"
   }
