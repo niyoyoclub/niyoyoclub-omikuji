@@ -1,0 +1,8 @@
+{
+  "name": "bnk48-omikuji",
+  "version": "1.0.0",
+  "description": "BNK48 Omikuji - 28 Cards of Encouragement",
+  "scripts": {
+    "deploy": "vercel"
+  }
+}
