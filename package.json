@@ -1,6 +1,6 @@
 {
   "name": "niyoyoclub-omikuji",
-  "version": "1.0.0",
+  "version": "1.0.0-SP1",
   "description": "Niyoyo Club Omikuji - 28 Cards of Encouragement",
   "scripts": {
     "deploy": "vercel"
