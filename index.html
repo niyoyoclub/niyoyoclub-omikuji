@@ -34,6 +34,7 @@
       padding-bottom: 60px;
     }
 
+    /* Top Navigation Bar */
     header {
       background: linear-gradient(135deg, #683b75, #8f539d);
       color: white;
@@ -62,6 +63,7 @@
       margin-top: 6px;
     }
 
+    /* Action Toolbar */
     .toolbar-container {
       max-width: 1240px;
       margin: 20px auto 10px;
@@ -105,12 +107,52 @@
       box-shadow: 0 2px 6px rgba(122, 73, 136, 0.3);
     }
 
+    .action-tools {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-family: 'Kanit', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: #27ae60;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #219653;
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--bnk-purple);
+      border-color: var(--border-color);
+    }
+    .btn-secondary:hover {
+      background: var(--bnk-light-purple);
+    }
+
+    /* Container */
     .main-container {
       max-width: 1240px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
+    /* =========================================
+       SECTION 0: DRAW / SEARCH VIEW (NEW)
+    ========================================= */
     .draw-section {
       max-width: 680px;
       margin: 10px auto 30px;
@@ -192,24 +234,25 @@
       background: #62366f;
     }
 
-    .btn-secondary {
-      background: white;
-      color: var(--bnk-purple);
-      border: 1px solid var(--border-color);
-      padding: 8px 16px;
-      border-radius: 8px;
+    .btn-random {
+      background: linear-gradient(135deg, var(--bnk-gold), #dfb33e);
+      color: white;
+      padding: 11px 22px;
+      border-radius: 10px;
+      border: none;
       font-family: 'Kanit', sans-serif;
-      font-size: 13.5px;
+      font-size: 15px;
       font-weight: 500;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      transition: all 0.2s;
+      gap: 8px;
+      transition: transform 0.15s, box-shadow 0.15s;
     }
 
-    .btn-secondary:hover {
-      background: var(--bnk-light-purple);
+    .btn-random:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(197, 155, 39, 0.35);
     }
 
     .quick-numbers {
@@ -238,6 +281,7 @@
       color: white;
     }
 
+    /* Single Card Display Result */
     .single-result-area {
       display: flex;
       justify-content: center;
@@ -255,6 +299,18 @@
       100% { opacity: 1; transform: rotateY(0deg) scale(1); }
     }
 
+    .shake-animation {
+      animation: shake 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    }
+
+    @keyframes shake {
+      10%, 90% { transform: translate3d(-2px, 0, 0) rotate(-1deg); }
+      20%, 80% { transform: translate3d(3px, 0, 0) rotate(2deg); }
+      30%, 50%, 70% { transform: translate3d(-5px, 0, 0) rotate(-2deg); }
+      40%, 60% { transform: translate3d(5px, 0, 0) rotate(1deg); }
+    }
+
+    /* Empty state */
     .empty-state {
       background: #fff;
       border: 2px dashed #dcd0e3;
@@ -270,6 +326,9 @@
       margin-bottom: 12px;
     }
 
+    /* =========================================
+       CARD COMPONENT (REUSABLE)
+    ========================================= */
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
@@ -323,6 +382,7 @@
       display: inline-block;
     }
 
+    /* Japanese Hanko / Seal */
     .hanko-seal {
       width: 44px;
       height: 44px;
@@ -417,6 +477,7 @@
       align-items: center;
     }
 
+    /* Filter Controls */
     .filter-bar {
       max-width: 1240px;
       margin: 10px auto 24px;
@@ -449,6 +510,100 @@
       border-color: var(--bnk-orchid);
     }
 
+    /* Print & Docs View */
+    .print-view, .docs-view {
+      display: none;
+    }
+
+    .a4-page {
+      background: white;
+      width: 210mm;
+      min-height: 297mm;
+      padding: 12mm 10mm;
+      margin: 0 auto 30px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 8mm;
+      box-sizing: border-box;
+      page-break-after: always;
+    }
+
+    .print-card {
+      border: 1.5px dashed #888;
+      border-radius: 8px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #ffffff;
+      height: 100%;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .print-card .scissors-mark {
+      position: absolute;
+      top: -10px;
+      right: 12px;
+      background: white;
+      padding: 0 4px;
+      font-size: 11px;
+      color: #888;
+    }
+
+    .docs-view {
+      background: white;
+      padding: 36px 48px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .docs-view h2 {
+      font-family: 'Kanit', sans-serif;
+      color: var(--bnk-purple);
+      margin-bottom: 8px;
+      font-size: 24px;
+    }
+
+    .docs-view p.docs-intro {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 24px;
+      border-bottom: 2px solid var(--bnk-light-purple);
+      padding-bottom: 12px;
+    }
+
+    .doc-item {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .doc-item h3 {
+      font-family: 'Kanit', sans-serif;
+      font-size: 17px;
+      color: #2c2230;
+      margin-bottom: 6px;
+    }
+
+    .doc-meta {
+      font-size: 13px;
+      color: #7a4988;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .doc-content {
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: #333;
+    }
+
+    /* Notification Toast */
     .toast {
       position: fixed;
       bottom: 24px;
@@ -469,10 +624,28 @@
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    /* PRINT STYLES */
+    @media print {
+      body { background: white; padding: 0; }
+      header, .toolbar-container, .filter-bar, .cards-grid, .docs-view, .toast, .draw-section {
+        display: none !important;
+      }
+      .print-view { display: block !important; }
+      .a4-page {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+        height: 297mm;
+        max-height: 297mm;
+        padding: 10mm;
+      }
+    }
   </style>
 </head>
 <body>
 
+  <!-- Header -->
   <header>
     <h1>
       <i class="fa-solid fa-fan"></i>
@@ -481,6 +654,7 @@
     <p>การ์ดเซียมซีเสี่ยงทายความหมายดี สำหรับกิจกรรมแฟนคลับและการส่งต่อกำลังใจ</p>
   </header>
 
+  <!-- Navigation & Tool Buttons -->
   <div class="toolbar-container">
     <div class="tab-buttons">
       <button class="tab-btn active" onclick="switchView('draw', this)">
@@ -489,10 +663,31 @@
       <button class="tab-btn" onclick="switchView('grid', this)">
         <i class="fa-solid fa-table-cells"></i> ดูการ์ดทั้งหมด (28 ใบ)
       </button>
+      <!--
+      <button class="tab-btn" onclick="switchView('print', this)">
+        <i class="fa-solid fa-print"></i> รูปแบบ A4 พร้อมสั่งพิมพ์ (7 แผ่น)
+      </button>
+      <button class="tab-btn" onclick="switchView('docs', this)">
+        <i class="fa-solid fa-file-lines"></i> ข้อความสำหรับ Google Docs
+      </button>
+      -->
     </div>
+
+    <!--
+    <div class="action-tools">
+      <button class="btn btn-secondary" onclick="window.print()">
+        <i class="fa-solid fa-print"></i> พิมพ์ / บันทึก PDF
+      </button>
+      <button class="btn btn-primary" onclick="copyDocsText()">
+        <i class="fa-solid fa-copy"></i> คัดลอกลง Google Docs
+      </button>
+    </div>
+    -->
   </div>
 
   <div class="main-container">
+
+    <!-- VIEW 0: Interactive Draw / Search Card -->
     <div class="draw-section" id="drawSection">
       <div class="draw-box" id="inputContainerBox">
         <h2><i class="fa-solid fa-wand-magic-sparkles"></i> ใส่หมายเลขเซียมซีเพื่อเปิดคำทำนาย</h2>
@@ -511,23 +706,32 @@
           <button class="btn-search" onclick="showCardByNumber()">
             <i class="fa-solid fa-eye"></i> ดูคำทำนาย
           </button>
+          <!--
+          <button class="btn-random" onclick="randomOmikuji()">
+            <i class="fa-solid fa-dice"></i> สุ่มเซียมซี (เขย่าติ้ว)
+          </button>
+          -->
         </div>
 
+        <!-- Quick selection chips -->
         <div class="quick-numbers">
           <span style="font-size: 12px; color: #888; margin-right: 4px;">เลือกด่วน:</span>
+          <!-- Dynamic number chips 1-28 will be rendered here -->
           <div id="quickChipsContainer" style="display:flex; flex-wrap:wrap; gap:4px; justify-content:center;"></div>
         </div>
       </div>
 
+      <!-- Result Card Display Area -->
       <div class="single-result-area" id="singleResultArea">
         <div class="empty-state">
           <i class="fa-solid fa-envelope-open-text"></i>
           <p style="font-family:'Kanit'; font-weight:500;">ยังไม่ได้เลือกหมายเลขเซียมซี</p>
-          <span style="font-size:12.5px;">กรอกเลข 1–28 หรือคลิกหมายเลขเลือกด่วนด้านบน</span>
+          <span style="font-size:12.5px;">กรอกเลข 1–28 หรือกดสุ่มเซียมซีเพื่อเริ่มอ่านคำทำนาย</span>
         </div>
       </div>
     </div>
 
+    <!-- Filter chips (for Grid View) -->
     <div class="filter-bar" id="filterBar" style="display:none;">
       <span class="filter-label"><i class="fa-solid fa-filter"></i> กรองระดับดวง:</span>
       <button class="filter-chip active" onclick="filterCards('all', this)">ทั้งหมด (28)</button>
@@ -537,12 +741,25 @@
       <button class="filter-chip" onclick="filterCards('小吉', this)">เริ่มต้นใหม่ 小吉 (1)</button>
     </div>
 
+    <!-- VIEW 1: Grid Cards -->
     <div class="cards-grid" id="cardsGrid" style="display:none;"></div>
+
+    <!-- VIEW 2: A4 Printable Sheets (4 cards per sheet = 7 sheets) -->
+    <div class="print-view" id="printView"></div>
+
+    <!-- VIEW 3: Google Docs Formatted View -->
+    <div class="docs-view" id="docsView">
+      <h2>เซียมซีบทเพลง BNK48 28 ใบ (ชุดสมบูรณ์)</h2>
+      <p class="docs-intro">สามารถกดปุ่ม "คัดลอกลง Google Docs" เพื่อนำข้อความนี้ไปวาง (Paste) ลงในเอกสาร Google Docs ได้ทันที โดยคงหัวข้อ ระดับดวง และคำทำนายไว้อย่างเป็นระเบียบ</p>
+      <div id="docsContent"></div>
+    </div>
+
   </div>
 
   <div class="toast" id="toastMessage">คัดลอกข้อความเรียบร้อยแล้ว!</div>
 
   <script>
+    // 28 Songs Master Data
     const omikujiList = [
       {
         num: 1,
@@ -798,6 +1015,7 @@
       }
     ];
 
+    // Card Template Generator
     function createCardHTML(c) {
       return `
         <div class="omikuji-card" data-seal="${c.seal}">
@@ -825,6 +1043,7 @@
       `;
     }
 
+    // Show Card By Input Number
     function showCardByNumber(targetNum) {
       const input = document.getElementById('omikujiNumberInput');
       const val = targetNum !== undefined ? targetNum : parseInt(input.value);
@@ -844,7 +1063,7 @@
         <div class="hero-card-wrapper">
           ${createCardHTML(card)}
           <div style="margin-top: 14px; display: flex; gap: 8px; justify-content: center;">
-            <button class="btn-secondary" onclick="copySingleCard(${card.num})">
+            <button class="btn btn-secondary" onclick="copySingleCard(${card.num})">
               <i class="fa-solid fa-copy"></i> คัดลอกคำทำนายใบนี้
             </button>
           </div>
@@ -852,6 +1071,28 @@
       `;
     }
 
+    // Random Omikuji with Shake Animation
+    function randomOmikuji() {
+      const box = document.getElementById('inputContainerBox');
+      box.classList.remove('shake-animation');
+      void box.offsetWidth; // trigger reflow
+      box.classList.add('shake-animation');
+
+      const resultArea = document.getElementById('singleResultArea');
+      resultArea.innerHTML = `
+        <div style="text-align:center; padding: 40px; color: var(--bnk-purple);">
+          <i class="fa-solid fa-spinner fa-spin" style="font-size:36px; margin-bottom:12px;"></i>
+          <p style="font-family:'Kanit'; font-size:16px;">กำลังเขย่าติ้วเสี่ยงทาย...</p>
+        </div>
+      `;
+
+      setTimeout(() => {
+        const randomNum = Math.floor(Math.random() * 28) + 1;
+        showCardByNumber(randomNum);
+      }, 550);
+    }
+
+    // Copy single card text
     function copySingleCard(num) {
       const c = omikujiList.find(item => item.num === num);
       if (!c) return;
@@ -862,6 +1103,7 @@
       });
     }
 
+    // Render Quick Selection Chips (1-28)
     function renderQuickChips() {
       const container = document.getElementById('quickChipsContainer');
       container.innerHTML = omikujiList.map(c => `
@@ -869,17 +1111,79 @@
       `).join('');
     }
 
+    // Render Grid View
     function renderGrid(items) {
       const grid = document.getElementById('cardsGrid');
       grid.innerHTML = items.map(c => createCardHTML(c)).join('');
     }
 
+    // Render Printable A4 View
+    function renderPrintView() {
+      const printView = document.getElementById('printView');
+      let pagesHtml = '';
+      const pageSize = 4;
+      
+      for (let i = 0; i < omikujiList.length; i += pageSize) {
+        const pageCards = omikujiList.slice(i, i + pageSize);
+        pagesHtml += `<div class="a4-page">`;
+        pageCards.forEach(c => {
+          pagesHtml += `
+            <div class="print-card">
+              <span class="scissors-mark"><i class="fa-solid fa-scissors"></i> ตัดตามรอย</span>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                <span style="font-family:'Kanit'; font-weight:700; color:var(--bnk-purple); font-size:14px; background:#f5eefb; padding:2px 10px; border-radius:12px;">เซียมซีใบที่ ${c.num}</span>
+                <div class="hanko-seal" style="width:36px; height:36px; font-size:16px;">${c.seal}</div>
+              </div>
+              <div style="text-align:center; margin-bottom:8px;">
+                <div style="font-family:'Kanit'; font-weight:700; font-size:17px; color:var(--bnk-purple);">${c.thai}</div>
+                <div style="font-size:11px; color:#777;">${c.orig}</div>
+                <span style="font-size:11px; background:#fef9e7; color:#b7791f; border:1px solid #f6e05e; padding:1px 6px; border-radius:4px; font-weight:600; display:inline-block; margin-top:3px;">${c.level}</span>
+              </div>
+              <div style="font-size:11px; text-align:center; color:#888; margin-bottom:6px;">
+                ${c.keywords.map(k => `[${k}]`).join(' ')}
+              </div>
+              <p style="font-size:12px; line-height:1.55; color:#333; text-align:justify; margin-bottom:10px; flex-grow:1;">
+                ${c.desc}
+              </p>
+              <div style="border-top:1px dashed #ccc; padding-top:6px; display:flex; justify-content:space-between; font-size:10px; color:#999; font-family:'Kanit';">
+                <span>BNK48 OMIKUJI CARD</span>
+                <span>ขอพลังจงอยู่กับคุณ</span>
+              </div>
+            </div>
+          `;
+        });
+        pagesHtml += `</div>`;
+      }
+      printView.innerHTML = pagesHtml;
+    }
+
+    // Render Docs View
+    function renderDocsView() {
+      const container = document.getElementById('docsContent');
+      container.innerHTML = omikujiList.map(c => `
+        <div class="doc-item">
+          <h3>
+            <span>ใบที่ ${c.num}: ${c.thai} (${c.orig})</span>
+          </h3>
+          <div class="doc-meta">
+            ระดับ: ${c.level} [${c.seal}] | คีย์เวิร์ด: ${c.keywords.join(', ')}
+          </div>
+          <div class="doc-content">
+            <b>คำทำนาย:</b> ${c.desc}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Tab switcher
     function switchView(viewName, btnEl) {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       if (btnEl) btnEl.classList.add('active');
 
       document.getElementById('drawSection').style.display = 'none';
       document.getElementById('cardsGrid').style.display = 'none';
+      document.getElementById('printView').style.display = 'none';
+      document.getElementById('docsView').style.display = 'none';
       document.getElementById('filterBar').style.display = 'none';
 
       if (viewName === 'draw') {
@@ -887,9 +1191,14 @@
       } else if (viewName === 'grid') {
         document.getElementById('cardsGrid').style.display = 'grid';
         document.getElementById('filterBar').style.display = 'flex';
+      } else if (viewName === 'print') {
+        document.getElementById('printView').style.display = 'block';
+      } else if (viewName === 'docs') {
+        document.getElementById('docsView').style.display = 'block';
       }
     }
 
+    // Filter cards in grid
     function filterCards(seal, btn) {
       document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
       btn.classList.add('active');
@@ -904,6 +1213,7 @@
       });
     }
 
+    // Show Toast
     function showToast(msg) {
       const toast = document.getElementById('toastMessage');
       toast.innerText = msg;
@@ -913,9 +1223,28 @@
       }, 3000);
     }
 
+    // Copy formatted text for Google Docs
+    function copyDocsText() {
+      let textToCopy = `=== ชุดใบเซียมซี 28 บทเพลงแห่งพลังใจ BNK48 ===\n\n`;
+      omikujiList.forEach(c => {
+        textToCopy += `ใบที่ ${c.num}: ${c.thai} (${c.orig})\n`;
+        textToCopy += `ระดับดวง: ${c.level} [${c.seal}]\n`;
+        textToCopy += `คีย์เวิร์ด: ${c.keywords.join(', ')}\n`;
+        textToCopy += `คำทำนาย: ${c.desc}\n`;
+        textToCopy += `--------------------------------------------------\n\n`;
+      });
+
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        showToast("คัดลอกเนื้อหาทั้งหมดเรียบร้อยแล้ว! นำไป Paste ใน Google Docs ได้ทันที");
+      });
+    }
+
+    // Initialize
     window.addEventListener('DOMContentLoaded', () => {
       renderQuickChips();
       renderGrid(omikujiList);
+      renderPrintView();
+      renderDocsView();
     });
   </script>
 </body>
